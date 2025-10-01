@@ -13,21 +13,10 @@ void add(SqList &arr, int value) {
     arr.data[arr.length] = value;
     arr.length++;
 }
-void insert(SqList &arr, int value) {
-    int i = 0;
-    while (arr.data[i] < value) {
-        i++;
-    }
-    for (int j = arr.length; j > i; j--) {
-        arr.data[j] = arr.data[j - 1];
-    }
-    arr.data[i] = value;
-    arr.length++;
-}
 void print(SqList &arr) {
     for (int i = 0; i < arr.length; i++) {
         if (i == 0) {
-            cout << arr.data[i];
+            cout << arr.data[i] << ",";
         }
         else {
             cout << " " << arr.data[i];
@@ -46,6 +35,5 @@ int main() {
     }
     int m;
     cin >> m;
-    insert(arr, m);
     print(arr);
 }
