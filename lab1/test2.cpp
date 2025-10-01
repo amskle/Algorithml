@@ -27,6 +27,9 @@ void insert(SqList &arr, int value) {
 void print(SqList &arr) {
     for (int i = 0; i < arr.length; i++) {
         cout << arr.data[i] << ",";
+        // else {
+        //     cout << " " << arr.data[i];
+        // }
     }
 }
 void destroy(SqList &arr) {
