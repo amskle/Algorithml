@@ -17,6 +17,7 @@ void add(vector<SqList> &arr, int coef, int exp) {
 bool cmp(SqList &arr, SqList &brr) {
     return arr.zhi > brr.zhi;
 }
+
 vector<SqList> Add(vector<SqList> &a, vector<SqList> &b) {
     vector<SqList> r;
     size_t i = 0, j = 0;
@@ -24,10 +25,12 @@ vector<SqList> Add(vector<SqList> &a, vector<SqList> &b) {
         if (a[i].zhi > b[j].zhi) {
             r.push_back(a[i]);
             i++;
-        } else if (a[i].zhi < b[j].zhi) {
+        } 
+        else if (a[i].zhi < b[j].zhi) {
             r.push_back(b[j]);
             j++;
-        } else { // 指数相等
+        } 
+        else { // 指数相等
             int sum = a[i].xishu + b[j].xishu;
             if (sum != 0) {
                 r.push_back({sum, a[i].zhi});
@@ -44,7 +47,6 @@ vector<SqList> Add(vector<SqList> &a, vector<SqList> &b) {
         r.push_back(b[j]);
         j++;
     }
-    
     return r;
 }
 
@@ -69,7 +71,8 @@ vector<SqList> chen(vector<SqList> &a, vector<SqList> &b) {
     for (size_t i = 1; i < temp_r.size(); ++i) {
         if (temp_r[i].zhi == current_exp) {
             current_coef += temp_r[i].xishu;
-        } else {
+        } 
+        else {
             if (current_coef != 0) {
                 r.push_back({current_coef, current_exp});
             }
@@ -80,7 +83,6 @@ vector<SqList> chen(vector<SqList> &a, vector<SqList> &b) {
     if (current_coef != 0) {
         r.push_back({current_coef, current_exp});
     }
-    
     return r;
 }
 
