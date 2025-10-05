@@ -63,22 +63,20 @@ void destroy(SList &arr) {
         delete t;
     }
 }
-SList reverse(SList head) {
-    SList prev = nullptr;
-    SList curr = head;
-    while (curr) {
-        SList nextNode = curr->next;
-        curr->next = prev;
-        prev = curr;
-        curr = nextNode;
+SList reverse(SList arr) {
+    SList p = nullptr;
+    SList c = arr;
+    while (c) {
+        SList node = c->next;
+        c->next = p;
+        p = c;
+        c = node;
     }
-    return prev;
+    return p;
 }
 
 // 折叠重排
 SList foldList(SList head) {
-    if (!head || !head->next || !head->next->next) return head; // 小于3节点直接返回
-
     // 1. 找中点
     SList slow = head->next, fast = head->next;
     SList prev = nullptr; // 记录中点前一个节点
