@@ -51,7 +51,6 @@ void print(Node* head) {
     Node* p = head->next;
     while (p) {
         cout << p->data << " " << p->len << " " << p->data_next;
-        if (p->next) cout << " ";
         p = p->next;
         cout << endl;
     }
@@ -114,12 +113,23 @@ SList foldList(SList head) {
     head->next = dummy->next;
     return head;
 }
+// foldList 后更新每个节点的 data_next
+void updateDataNext(SList head) {
+    SList p = head->next;
+    while (p && p->next) {
+        p->data_next = p->next->data; // 下一个节点的地址
+        p = p->next;
+    }
+    if (p) p->data_next = "-1"; // 最后一个节点
+}
+
 int main() {
     string temp;
     int n;
     cin >> temp >> n;
     SList arr = add(temp, n);
     arr = foldList(arr);
+    updateDataNext(arr);
     print(arr);
     destroy(arr);
 }
